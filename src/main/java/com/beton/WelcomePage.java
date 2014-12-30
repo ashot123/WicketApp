@@ -1,6 +1,8 @@
 package com.beton;
 
 import com.beton.model.UserModel;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -29,10 +31,28 @@ public class WelcomePage extends WebPage {
 
         Form<?> form = new Form("form");
 
-        TextField<String> text = new TextField<String>("text", new PropertyModel<String>(userModel, "name"));
-        DropDownChoice<String> gender =
-                new DropDownChoice<String>("gender", new PropertyModel<String>(userModel, "gender"), genderChoices);
+        final TextField<String> text = new TextField<String>("text", new PropertyModel<String>(userModel, "name"));
+        text.setOutputMarkupId(true);
 
+        final DropDownChoice<String> gender =
+                new DropDownChoice<String>("gender", new PropertyModel<String>(userModel, "gender"), genderChoices);
+        gender.setOutputMarkupId(true);
+
+        AjaxButton ajaxButton = new AjaxButton("submit") {
+
+            @Override
+            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+                super.onSubmit(target, form);
+
+
+                text.setEnabled(false);
+                gender.setEnabled(false);
+
+                target.add(text);
+                target.add(gender);
+            }
+        };
+/*
         Button button = new Button("submit") {
             @Override
             public void onSubmit() {
@@ -41,12 +61,12 @@ public class WelcomePage extends WebPage {
                 System.out.println("Gender = " + userModel.getGender());
 
             }
-        };
+        };*/
 
         add(form);
         form.add(text);
         form.add(gender);
-        form.add(button);
+        form.add(ajaxButton);
 
 
     }
