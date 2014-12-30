@@ -24,8 +24,28 @@ public class WelcomePage extends WebPage {
 
     public WelcomePage() {
 
-        add(new SamplePanel("panelId"));
-        add(new SamplePanel("panel2Id"));
+        //add(new SamplePanel("panelId"));
+        //add(new SamplePanel("panel2Id"));
+
+        Form<?> form = new Form<Object>("form");
+
+        final TextField<String> textField = new TextField<String>("textField", new Model<String>());
+        textField.setOutputMarkupId(true);
+        textField.setOutputMarkupPlaceholderTag(true);
+        form.add(textField);
+
+        form.add(new AjaxButton("submit") {
+            @Override
+            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+                super.onSubmit(target, form);
+
+                textField.setVisible(!textField.isVisible());
+
+                target.add(textField);
+            }
+        });
+
+        add(form);
 
     }
 }
