@@ -1,20 +1,14 @@
 package com.beton;
 
-import com.beton.model.UserModel;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Ashot Karakhanyan on 27-12-2014
@@ -22,30 +16,30 @@ import java.util.List;
 public class WelcomePage extends WebPage {
 
 
-    public WelcomePage() {
+    private String action;
+
+    public WelcomePage(String action) {
 
         //add(new SamplePanel("panelId"));
         //add(new SamplePanel("panel2Id"));
+        this.action = action;
+        addComponents();
 
+    }
+
+    private void addComponents() {
         Form<?> form = new Form<Object>("form");
 
-        final TextField<String> textField = new TextField<String>("textField", new Model<String>());
-        textField.setOutputMarkupId(true);
-        textField.setOutputMarkupPlaceholderTag(true);
-        form.add(textField);
+        Fragment fragment;
+        if (action.equalsIgnoreCase("view")) {
+            fragment = new Fragment("container", "viewFragment", this);
+            fragment.add(new Label("label", new Model<String>("Hello World")));
+        } else {
+            fragment = new Fragment("container", "editFragment", this);
+            fragment.add(new TextField<String>("textField", new Model<String>("Hello World")));
+        }
 
-        form.add(new AjaxButton("submit") {
-            @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                super.onSubmit(target, form);
-
-                textField.setVisible(!textField.isVisible());
-
-                target.add(textField);
-            }
-        });
-
+        form.add(fragment);
         add(form);
-
     }
 }

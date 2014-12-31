@@ -8,9 +8,16 @@
 <!--<div wicket:id="panelId"></div>-->
 <!--<div wicket:id="panel2Id"></div>-->
 <form wicket:id="form">
-    <input type="text" wicket:id="textField">
-    <input type="button" wicket:id="submit" value="submit">
+    <div wicket:id="container"></div>
 </form>
+
+<wicket:fragment wicket:id="viewFragment">
+    <span wicket:id="label"></span>
+</wicket:fragment>
+
+<wicket:fragment wicket:id="editFragment">
+    <input type="text" wicket:id="textField">
+</wicket:fragment>
 
 </body>
 </html>
