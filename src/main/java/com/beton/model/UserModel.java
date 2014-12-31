@@ -9,6 +9,7 @@ public class UserModel implements Serializable {
 
     private String name;
     private String gender;
+    private String password;
 
     public String getName() {
         return name;
@@ -24,5 +25,13 @@ public class UserModel implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
