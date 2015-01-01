@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+    <style>
+        .feedbackPanelERROR {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div wicket:id="feedbackMessage"></div>
+
+<form wicket:id="form">
+    <table>
+        <tr>
+            <td>Name: </td>
+            <td><input type="text" wicket:id="name"></td>
+        </tr>
+        <tr>
+            <td>Age: </td>
+            <td><input type="text" wicket:id="age"></td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td><input type="text" wicket:id="email"></td>
+        </tr>
+        <tr>
+            <td>ZipCode: </td>
+            <td><input type="text" wicket:id="zipCode"></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" wicket:id="submit"></td>
+        </tr>
+
+
+    </table>
+
+</form>
+</body>
+</html>

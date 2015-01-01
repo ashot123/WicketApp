@@ -24,7 +24,8 @@ public class WicketApplication extends WebApplication
 		//return WelcomePage.class;
 		//return ModalWindowExample.class;
 		//return SpringIntegrationPage.class;
-		return LoginPage.class;
+		//return LoginPage.class;
+		return FormValidationPage.class;
 	}
 
 	@Override
