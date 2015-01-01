@@ -11,6 +11,14 @@ public class UserModel implements Serializable {
     private String gender;
     private String password;
 
+    public UserModel() {
+    }
+
+    public UserModel(String name, String gender) {
+        this.name = name;
+        this.gender = gender;
+    }
+
     public String getName() {
         return name;
     }

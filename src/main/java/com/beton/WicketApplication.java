@@ -8,6 +8,8 @@ import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
+import java.util.NavigableMap;
+
 /**
  * Application object for your web application.
  * If you want to run this application without deploying, run the Start class.
@@ -25,7 +27,8 @@ public class WicketApplication extends WebApplication
 		//return ModalWindowExample.class;
 		//return SpringIntegrationPage.class;
 		//return LoginPage.class;
-		return FormValidationPage.class;
+		//return FormValidationPage.class;
+		return PageablePages.class;
 	}
 
 	@Override
