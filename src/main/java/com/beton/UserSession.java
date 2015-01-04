@@ -13,7 +13,7 @@ public class UserSession extends WebSession {
     private UserModel userModel;
 
     /**
-     * Constructor. Note that {@link RequestCycle} is not available until this constructor returns.
+     * Constructor. Note that {@link org.apache.wicket.request.cycle.RequestCycle} is not available until this constructor returns.
      *
      * @param request The current request
      */

@@ -17,6 +17,8 @@ import java.util.List;
  */
 public class SamplePanel extends Panel {
 
+
+    private boolean visible = true;
     public SamplePanel(String id) {
         super(id);
 
@@ -29,10 +31,12 @@ public class SamplePanel extends Panel {
         Form<?> form = new Form("form");
 
         final TextField<String> text = new TextField<String>("text", new PropertyModel<String>(userModel, "name"));
+        text.setOutputMarkupPlaceholderTag(true);
         text.setOutputMarkupId(true);
 
         final DropDownChoice<String> gender =
                 new DropDownChoice<String>("gender", new PropertyModel<String>(userModel, "gender"), genderChoices);
+        gender.setOutputMarkupPlaceholderTag(true);
         gender.setOutputMarkupId(true);
 
         AjaxButton ajaxButton = new AjaxButton("submit") {
@@ -41,9 +45,12 @@ public class SamplePanel extends Panel {
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 super.onSubmit(target, form);
 
+                visible = !visible;
+                //text.setEnabled(false);
+                //gender.setEnabled(false);
 
-                text.setEnabled(false);
-                gender.setEnabled(false);
+                text.setVisible(visible);
+                gender.setVisible(visible);
 
                 target.add(text);
                 target.add(gender);

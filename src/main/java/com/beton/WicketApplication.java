@@ -28,7 +28,8 @@ public class WicketApplication extends WebApplication
 		//return SpringIntegrationPage.class;
 		//return LoginPage.class;
 		//return FormValidationPage.class;
-		return PageablePages.class;
+		//return PageablePages.class;
+		return PanelDemoPage.class;
 	}
 
 	@Override
